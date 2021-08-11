@@ -1,8 +1,7 @@
 import React from 'react';
+ import useResource from './useResources';
 
-import axios from 'axios';
-
-class ResourceList extends React.Component{
+/*class ResourceList extends React.Component{
     state={
         resources:[],
     }
@@ -17,7 +16,7 @@ class ResourceList extends React.Component{
         if(prevProps.resourceName !== this.props.resourceName){
             const response =await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resourceName}`);
 
-            this.setState({resourses: response.data})
+            this.setState({resources: response.data})
         }
     }
     render(){
@@ -30,6 +29,15 @@ class ResourceList extends React.Component{
         );
     }
 }
-
-
+*/
+const ResourceList= ({resourceName})=>{
+    const resources= useResource(resourceName)
+    return(
+        <ul>
+            {resources.map( resource =>(
+                <li key={resource.id}>{resource.title}</li>
+            ))}
+        </ul> 
+    )
+    }
 export default ResourceList;
