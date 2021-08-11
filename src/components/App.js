@@ -1,10 +1,18 @@
 import React from 'react';
 import ResourceList from './ResourceList';
  class App extends React.Component{
-     render(){
-         return;
+    state={
+        resourceName:'posts'
+    } 
+    render(){
+         return(
+             <React.Fragment>
+                 <button onClick={()=> this.setState({resource:'posts'})}>Posts</button>
+                 <button onClick={()=>this.setState({resourceName:'todos'})}>Todos</button>
+                 <ResourceList resourceName={this.state.resourceName}/>
+             </React.Fragment>
+         );
      }
  }
-
-
+ 
 export default App;
